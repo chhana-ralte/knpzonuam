@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Person extends Model
+class Bial extends Model
 {
     use HasFactory;
-    protected $table = "person";
-    protected $fillable = ['title','name'];
+    public function members(){
+        return $this->hasMany(Member::class);
+    }
 
 }

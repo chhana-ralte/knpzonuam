@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Bial;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,9 +18,14 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'a@a.com',
+            'password' => 'password'
         ]);
-
-        $this->call(StudentSeeder::class);
+        for($i=1;$i<10;$i++){
+            Bial::factory()->create([
+                'bial' => $i
+            ]);
+        }
+        $this->call(MemberSeeder::class);
     }
 }

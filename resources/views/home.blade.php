@@ -1,16 +1,23 @@
-<x-layout>
-    <x-slot:heading>
-        Home page
-    </x-slot:heading>
-    <h2>This is home </h2>
-    <div class="space-y-2">
-    @foreach ($students as $student)
-        <a href="person/{{$student['id']}}" class="hover:bg-gray-100 block border border-gray-200 px-4 py-4 rounded-lg">
-            <div class="text-sm text-blue-800 text-bold">{{ $student->name}}</div> - {{ $student->person->title }}
-        </a>
-    @endforeach
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        {{$students->links()}}
-    </div>
-</x-layout>
+</div>
+@endsection

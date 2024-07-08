@@ -20,7 +20,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //Model::preveneLazyLoading();
+
         //Model::preventLazyLoading();
         //Paginator::useBootstrapFive();
+        Paginator::useBootstrap();
+        // Gate::define('edit-job',function(User $user, Job $job){
+        //     return $job->enployer->user->is($user);
+        // });
     }
 }

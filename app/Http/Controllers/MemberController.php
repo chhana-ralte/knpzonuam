@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bial;
 use App\Models\Member;
+
 
 class MemberController extends Controller
 {
@@ -16,16 +18,23 @@ class MemberController extends Controller
         return view('member.create');
     }
     public function store(){
+        //dd(request()->all());
         request()->validate([
             'name' => ['required'],
             'father' => ['required']
         ]);
         
         $member = Member::create([
-            'name'=>request('name'),
-            'father'=>request('father')
+            'name'=> request('name'),
+            'father'=> request('father'),
+            'bial_id' => request('bial'),
+            'dob' => request('dob'),
+            'address' => request('address'),
+            'details' => request('details')
         ]);
-        return view('member.show',['member' => $member]);
+        $members = Member::where('bial_id',$member->bial_id)->paginate();
+        return view('bial.show',['bial' => Bial::find($member->bial_id), 'members' => $members]);
+        //return view('bial.show',['bial' => $]);
     }
     public function show(Member $member){
         return view('member.show',['member' => $member]);
@@ -42,8 +51,12 @@ class MemberController extends Controller
         
         $member = Member::findOrFail($id);
         $member->update([
-            'name'=>$request->name,
-            'father'=>$request->father
+            'name'=> request('name'),
+            'father'=> request('father'),
+            'bial_id' => request('bial'),
+            'dob' => request('dob'),
+            'address' => request('address'),
+            'details' => request('details')
         ]);
         return redirect('/member/' . $member->id);
     }
@@ -51,7 +64,7 @@ class MemberController extends Controller
             //return "Delete";
         //$member = Member::findOrFail($id);
         $member->delete();
-        return redirect('/member/');
+        return redirect('/bial/' . $member->bial->id);
     }
     public function deleteAll(){
         return "Deleteall";

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Attmaster;
 
-class PostController extends Controller
+class AttmasterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('attmaster.index',['attmasters' => Attmaster::all()]);
     }
 
     /**
@@ -19,7 +20,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('attmaster.create');
     }
 
     /**
@@ -27,7 +28,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attmaster = Attmaster::create([
+            'kaini'=>$request->kaini,
+            'remark'=>$request->remark
+        ]);
+        return redirect('/attmaster');
     }
 
     /**
@@ -35,7 +40,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('attmaster.show',['attmaster' => Attmaster::find($id)]);
     }
 
     /**

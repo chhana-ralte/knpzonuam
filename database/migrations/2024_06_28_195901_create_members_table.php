@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('father');
+            $table->ForeignIdFor(App\Models\Bial::class);
+            $table->date('dob');
+            $table->string('address');
+            $table->text('details');
             $table->timestamps();
         });
     }

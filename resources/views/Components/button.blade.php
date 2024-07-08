@@ -1,1 +1,11 @@
-<a {{ $attributes->merge(['class' => 'rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'])}}>{{ $slot }}</a>
+@props(['type' => "a"])
+
+@if($type == "a")
+    <{{$type}} {{ $attributes->merge(['class' => 'btn btn-outline-secondary'])}}>{{ $slot }}</{{$type}}>
+@elseif($type == "submit")
+    <button {{ $attributes->merge(['class' => 'btn btn-primary', 'type' => 'submit'])}}>{{ $slot }}</button>
+@elseif($type == "delete")
+    <button {{ $attributes->merge(['class' => 'btn btn-danger', 'type' => 'submit'])}}>{{ $slot }}</button>
+@else
+    <{{$type}} {{ $attributes->merge(['class' => 'btn btn-primary'])}}>{{ $slot }}</{{$type}}>
+@endif
