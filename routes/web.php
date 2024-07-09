@@ -58,7 +58,7 @@ Route::resource('member.att',MemberAttController::class)->shallow();
 
 
 // Route::controller(MemberController::class)->group(function(){
-//     Route::get('/member/deleteall','deleteAll');
+//    Route::get('/member/deleteall','deleteAll');
 //     Route::get('/','index');
 //     Route::get('/member','index');
 //     Route::get('/member/create','create');
