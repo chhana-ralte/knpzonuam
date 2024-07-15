@@ -11,12 +11,16 @@ class MiscController extends Controller
         return view('hruaitute');
     }
     public function search(){
+        return view('search');
+    }
+    public function searchResult(){
         $str = $_GET['search'];
         $members = Member::where('name','like','%' . $str . '%')
             ->orWhere('father','like','%' . $str . '%')
-            ->paginate(5)->withQueryString();
+            ->orderBy('bial_id')
+            ->paginate(20)->withQueryString();
         //dd($members->links());
-        return view('search',['str' => $str, 'members' => $members]);
+        return view('searchresult',['str' => $str, 'members' => $members]);
         
     }
 }

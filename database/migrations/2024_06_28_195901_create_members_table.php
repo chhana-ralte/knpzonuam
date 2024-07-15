@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('father');
+            $table->string('phone')->nullable();
+            $table->string('sspawl')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('address')->nullable();
+            $table->text('details')->nullable();
+            $table->boolean('deleted')->default(false);
             $table->ForeignIdFor(App\Models\Bial::class);
-            $table->date('dob');
-            $table->string('address');
-            $table->text('details');
             $table->timestamps();
         });
     }

@@ -4,16 +4,23 @@
     </x-slot:heading>
     <div class="container">
         <div class="row p-2 border bg-dark text-light">
+            @auth
+            <div class="col col-sm-3">
+                <a class="btn btn-primary" href="/attmaster/create">Kaini siamna</a>
+            </div>
+            @endif
+
             <div class="col col-sm-3">
                 Bial-wise Report
             </div>
-            <div class="col col-sm-9">
+            <div class="col col-sm-6">
                 @foreach(\App\Models\Bial::all() as $b)
                     <x-button type="a" href="/bial/{{ $b->id }}/att">{{ $b->bial }}</x-button>
                 @endforeach
             </div>
         </div>
-    @foreach($attmasters as $am)
+        @auth
+        @foreach($attmasters as $am)
         <div class="row p-2">
             <div class="col col-sm-3">
                 {{ $am->kaini }}
@@ -24,6 +31,7 @@
                 @endforeach
             </div>
         </div>
-    @endforeach
+        @endforeach
+        @endif
     </div>
 </x-bslayout>

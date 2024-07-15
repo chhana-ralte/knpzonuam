@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('attmasters', function (Blueprint $table) {
             $table->id();
             $table->date('kaini');
-            $table->text('remark');
+            $table->text('remark')->nullable();
             $table->timestamps();
         });
     }

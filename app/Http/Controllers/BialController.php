@@ -10,11 +10,12 @@ use App\Models\Member;
 class BialController extends Controller
 {
     public function index(){
-        $bials = DB::table('members')
-                 ->select('bial_id as bial', DB::raw('count(*) as cnt'))
-                 ->groupBy('bial_id')
-                 ->orderBy('bial_id')
-                 ->get();
+        $bials = Bial::orderBy('bial')->get();
+        // $bials = DB::table('members')
+        //          ->select('bial_id as bial', DB::raw('count(*) as cnt'))
+        //          ->groupBy('bial_id')
+        //          ->orderBy('bial_id')
+        //          ->get();
 
         // $bials = Member::selectRaw('bial_id, count(*) as cnt')
         //     ->groupBy('bial_id')
@@ -25,7 +26,8 @@ class BialController extends Controller
     }
     public function show(string $id)
     {
-        $members = Member::where('bial_id',$id)->paginate();
+        $members = Member::where('bial_id',$id)
+            ->paginate();
         return view('bial.show',['bial' => Bial::find($id), 'members' => $members]);
     }
 

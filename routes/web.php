@@ -17,7 +17,7 @@ use App\Http\Controllers\MiscController;
 //use App\Models\Student;
 //use App\Models\Person;
 
-Route::get('/', [MemberController::class, 'index']);
+Route::get('/', [BialController::class, 'index']);
 // {
     //return "Hello world";
     //dd(Person::all());
@@ -28,11 +28,12 @@ Route::get('/', [MemberController::class, 'index']);
 //});
 Route::controller(MiscController::class)->group(function(){
     Route::get('/search', 'search');
+    Route::get('/searchresult', 'searchResult');
     Route::get('/hruaitute','hruaitute');
 });
 
 
-Route::resource('member', MemberController::class);//->middleware('auth');
+Route::resource('member', MemberController::class);
 
 Route::controller(RegisterController::class)->group(function(){
     Route::get('/register', 'create');
@@ -43,6 +44,8 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'store');
     Route::post('/logout', 'destroy')->name('logout');
+    Route::get('/changepassword', 'changePassword');
+    Route::post('/changepassword', 'changePasswordStore')->name('changepassword');
 });
 
 Route::controller(TestController::class)->group(function(){
@@ -56,6 +59,7 @@ Route::resource('attmaster.att',AttController::class)->shallow();
 Route::resource('bial.att',BialAttController::class)->shallow();
 Route::resource('member.att',MemberAttController::class)->shallow();
 
+//Auth::routes(['bial.index']);
 
 // Route::controller(MemberController::class)->group(function(){
 //    Route::get('/member/deleteall','deleteAll');

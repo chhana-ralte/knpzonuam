@@ -18,7 +18,7 @@
                 </div>
                 <div class="row p-2 border">
                     <div class="col col-sm-3">Pianni</div>
-                    <div class="col col-sm-5">{{ $member->dob }}</div>
+                    <div class="col col-sm-5">{{ date_format(date_create($member->dob),'d-M') }}</div>
                 </div>
                 <div class="row p-2 border">
                     <div class="col col-sm-3">Awmna bial</div>
@@ -32,17 +32,31 @@
                     <div class="col col-sm-3">Details</div>
                     <div class="col col-sm-5">{{ $member->details }}</div>
                 </div>
-                
+                <div class="row p-2 border">
+                    <div class="col col-sm-3"></div>
+                    <div class="col col-sm-5">
+                        <a class="btn btn-outline-secondary" href='/bial/{{$member->bial->id}}'>Back</a>
+                        @auth
+                            <x-button href='/member/{{$member->id}}/edit'>Edit</x-button>
+                            @if($member->deleted)
+                                <x-button type='delete' form="undo-delete-form">UNDO DELETE</x-button>
+                            @else
+                                <x-button type='delete' form="delete-form">DELETE</x-button>
+                            @endif
+                            <form id='delete-form' action='/member/{{ $member->id }}' method='post' onsubmit="return confirm('I delete duh tak tak em?');" class='hidden'>
+                                @csrf
+                                @method('DELETE')
+                                <input type='hidden' name='delete' value='true'>
+                            </form>
+                            <form id='undo-delete-form' action='/member/{{ $member->id }}' method='post' onsubmit="return confirm('I recover duh tak tak em?');" class='hidden'>
+                                @csrf
+                                @method('DELETE')
+                                <input type='hidden' name='delete' value='false'>
+                            </form>
+                        @endif                
+                    </div>
+                </div>
             </div>
         </div>
     </dd>
-    <div class="mt-6 flex items-center justify-center gap-x-6">
-        <x-button type='delete' form="delete-form">DELETE</x-button>
-        <x-button href='/member/{{$member->id}}/edit'>Edit</x-button>
-    </div>
-    <form id='delete-form' action='/member/{{ $member->id }}' method='post' onsubmit="return confirm('I delete duh tak tak em?');" class='hidden'>
-        @csrf
-        @method('DELETE')
-    </form>
-
 </x-bslayout>

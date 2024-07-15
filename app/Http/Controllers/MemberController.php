@@ -21,7 +21,8 @@ class MemberController extends Controller
         //dd(request()->all());
         request()->validate([
             'name' => ['required'],
-            'father' => ['required']
+            'father' => ['required'],
+            'bial' => ['required']
         ]);
         
         $member = Member::create([
@@ -29,6 +30,8 @@ class MemberController extends Controller
             'father'=> request('father'),
             'bial_id' => request('bial'),
             'dob' => request('dob'),
+            'phone' => request('phone'),
+            'sspawl' => request('sspawl'),
             'address' => request('address'),
             'details' => request('details')
         ]);
@@ -60,11 +63,23 @@ class MemberController extends Controller
         ]);
         return redirect('/member/' . $member->id);
     }
-    public function destroy(Member $member){
+    public function destroy(Member $member, Request $request){
+        //dd(request()->all());
             //return "Delete";
         //$member = Member::findOrFail($id);
-        $member->delete();
-        return redirect('/bial/' . $member->bial->id);
+        if($request->delete == "true"){
+            $member->update([
+                'deleted' => '1'
+            ]);
+            return redirect('/bial/' . $member->bial->id);    
+        }
+        else{
+            $member->update([
+                'deleted' => 0
+            ]);
+            return redirect('/member/' . $member->id);
+    
+        }
     }
     public function deleteAll(){
         return "Deleteall";

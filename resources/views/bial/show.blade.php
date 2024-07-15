@@ -17,20 +17,38 @@
                 @endforeach
                 </div>
             </div>
+            @auth
             <div class="col col-sm-3">
                 <x-button href="{{ route('member.create',['bial'=>$bial->id]) }}">Member thar</x-button>
             </div>
+            @endif
         </div>
     </div>
     <?php $sl=1 ?>
     <x-table>
-    @foreach ($members as $member)
+    @if(count($members) > 0)
         <tr>
-            <td>{{ $sl++ }}</td>
-            <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2 px-4">{{$member->name}}</a></td>
-            <td>{{$member->father}}</td>
+            <th>Sl</th>
+            <th>Hming</th>
+            <th>Pa/Nu Hming</th>
         </tr>
-    @endforeach
+        @foreach ($members as $member)
+            <tr>
+                @if($member->deleted)
+                    <td><i>NA</i></td>
+                    <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2 px-4"><s><i>{{$member->name}}</i></s></a></td>
+                @else
+                    <td>{{ $sl++ }}</td>
+                    <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2 px-4">{{$member->name}}</a></td>
+                @endif
+                <td>{{$member->father}}</td>
+            </tr>
+        @endforeach
+    @else
+        <div class="alert alert-warning">
+            Member an awm lo tlat mai. 'Member Thar' button atang hian a dah luh theih e.
+        </div>
+    @endif
     </x-table>
     <div>
         {{$members->links()}}

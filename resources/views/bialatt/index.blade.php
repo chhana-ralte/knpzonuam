@@ -23,16 +23,31 @@
             <tr>
                 <th>Sl</th><th>Hming</th>
                 @foreach($attmasters as $am)
-                    <th><a href="{{ route('attmaster.att.create',[$am->id,'bial_id'=>$bial->id]) }}">{{ $am->kaini }}</a></th>
+                    @auth
+                        <th><a href="{{ route('attmaster.att.create',[$am->id,'bial_id'=>$bial->id]) }}">{{ date_format(date_create($am->kaini), 'd-M') }}</a></th>
+                    @else
+                        <th>{{ date_format(date_create($am->kaini), 'd-M') }}</th>
+                    @endif
                 @endforeach
             </tr>
             <?php $sl=1 ?>
             @foreach($members as $m)
             <tr>
-                <td>{{ $sl++ }}</td><td><x-a href="{{ route('member.att.create', $m->id) }}">{{ $m->name }}</x-a></td>
+                @auth
+                    @if($m->deleted)
+                        <td><i>NA</i></td>
+                        <td><s><i>{{ $m->name }}</i></s></td>
+                    @else
+                        <td>{{ $sl++ }}</td>
+                        <td><x-a href="{{ route('member.att.create', $m->id) }}">{{ $m->name }}</x-a></td>
+                    @endif
+                @else
+                    <td>{{ $sl++ }}</td>
+                    <td>{{ $m->name }}</td>
+                @endif
                 @foreach($attmasters as $am)
                     @if(isset($atts[$am->id][$m->id]))
-                        <td>{{ $atts[$am->id][$m->id]}}</td>
+                        <td align=center>{{ $atts[$am->id][$m->id]}}</td>
                     @else
                         <td>-</td>
                     @endif

@@ -25,7 +25,9 @@ class AttController extends Controller
     {
         if(isset($_GET['bial_id'])){
             $bial = Bial::findOrFail($_GET['bial_id']);
-            $members = Member::where('bial_id',$bial->id)->paginate();
+            $members = Member::where('bial_id',$bial->id)
+                ->where('deleted',0)
+                ->paginate();
         }
         else{
             $members = Member::paginate();

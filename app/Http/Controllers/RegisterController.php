@@ -10,16 +10,17 @@ use App\Models\User;
 class RegisterController extends Controller
 {
     public function create(){
-        return view('auth.register.create');
+        return view('auth.register.create2');
     }
     public function store(Request $request){
         $validated = $request->validate([
             'name' => ['required', 'min:3'],
-            'email' => 'required',
-            'password' => ['required', 'min:6', 'confirmed']
+            'username' => 'required',
+            'password' => ['required', 'min:3', 'confirmed']
         ]);
-        //dd($request);
+        
         $user = User::create($validated);
+        //dd($validated);
         Auth::login($user);
     }
 

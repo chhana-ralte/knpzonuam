@@ -11,9 +11,9 @@
             @foreach($bials as $b)
                 <tr>
                     <td><a href="{{ route('bial.show',$b->bial) }}">Bial {{ $b->bial }}-na</a></td>
-                    <td>{{ $b->cnt }}</td>
+                    <td>{{ $b->members->count() }}</td>
                 </tr>
-                <?php $total += $b->cnt ?>
+                <?php $total += $b->members->count() ?>
             @endforeach
             <tr>
                 <th>Total</th><th>{{ $total }}</th>

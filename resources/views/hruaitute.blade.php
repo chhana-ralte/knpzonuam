@@ -2,11 +2,7 @@
     <x-slot:heading>
         Welcome to KNP Zonuam website
     </x-slot:heading>
-    <div class="container p-3">
-    @foreach(\App\Models\Bial::all() as $b)
-        <x-button type="a" href="/bial/{{ $b->id }}">{{ $b->bial }}</x-button>
-    @endforeach
-    </div>
+
     <div class="container p-3">
         <div class="row">
             <div class="col col-sm-3 p-2">

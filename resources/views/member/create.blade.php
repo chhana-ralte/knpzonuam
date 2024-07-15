@@ -3,12 +3,11 @@
         Entry
     </x-slot:heading>
 <div class="container">
-  <form method='post' action='/member'>
+  <form method='post' action="{{ route('member.store') }}">
     @csrf
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
         <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
 
         @if ($errors->any())
           <div class='alert alert-warning'>
@@ -78,6 +77,36 @@
 
         <div class="form-group row p-2">
           <div class="col col-sm-3">
+            <label for="name">Nu/Pa phone</label>
+          </div>
+          <div class="col col-sm-4">
+            <input type="text" class="form-control" name='phone' id="phone" placeholder="Mahni/Nu/Pa phone">
+            <x-form-error name='phone' />
+          </div>
+        </div>
+
+
+        <div class="form-group row p-2">
+          <div class="col col-sm-3">
+            <label for="name">Sande Sikul awmna pawl</label>
+          </div>
+          <div class="col col-sm-4">
+            <select class="form-control" name='sspawl' id="bial" placeholder="Sande Sikula awmna pawl">
+              <option value="Beginner">Beginner</option>
+              <option value="Primary">Primary</option>
+              <option value="Junior">Junior</option>
+              <option value="Baptisma">Baptisma</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Senior A">Senior A</option>
+
+            </select>
+            <x-form-error name='sspawl' />
+          </div>
+        </div>
+
+
+        <div class="form-group row p-2">
+          <div class="col col-sm-3">
             <label for="name">Details</label>
           </div>
           <div class="col col-sm-4">
@@ -86,12 +115,17 @@
           </div>
         </div>
 
+        <div class="form-group row p-2">
+          <div class="col col-sm-3">
+          </div>
+          <div class="col col-sm-4">
+            <x-button type="a" href="/member">Cancel</x-button>
+            <x-button type='submit'>Save</x-button>
 
-    </div>
+          </div>
+        </div>
 
-    <div class="mt-6 flex items-center justify-end gap-x-6">
-      <x-button type="a" href="/member">Cancel</x-button>
-      <x-button type='submit'>Save</x-button>
+
     </div>
   </form>
 </div>

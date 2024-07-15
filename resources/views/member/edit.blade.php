@@ -86,14 +86,18 @@
             <x-form-error name='details' />
           </div>
         </div>
-
+        <div class="form-group row p-2">
+          <div class="col col-sm-3">
+            
+          </div>
+          <div class="col col-sm-4">
+            <x-button type="a" href="/member/{{ $member->id }}">Cancel</x-button>
+            <x-button type='submit'>Update</x-button>
+          </div>
+        </div>
 
     </div>
 
-    <div class="mt-6 flex items-center justify-end gap-x-6">
-      <x-button type="a" href="/member/{{ $member->id }}">Cancel</x-button>
-      <x-button type='submit'>Update</x-button>
-    </div>
   </form>
 </div>
 </x-bslayout>
