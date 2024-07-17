@@ -14,9 +14,11 @@
                 Bial-wise Report
             </div>
             <div class="col col-sm-6">
-                @foreach(\App\Models\Bial::all() as $b)
+                <div class="btn-group">
+                @foreach(\App\Models\Bial::orderBy('bial')->get() as $b)
                     <x-button type="a" href="/bial/{{ $b->id }}/att">{{ $b->bial }}</x-button>
                 @endforeach
+                </div>
             </div>
         </div>
         @auth

@@ -1,6 +1,6 @@
 <x-bslayout>
   <x-slot:heading>
-        Entry
+        Edit member
     </x-slot:heading>
 <div class="container">
   <form method='post' action='/member/{{$member->id}}'>
@@ -8,8 +8,6 @@
     @method('patch')
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
 
         @if ($errors->any())
           <div class='alert alert-warning'>
@@ -45,6 +43,17 @@
 
         <div class="form-group row p-2">
           <div class="col col-sm-3">
+            <label for="phone">Phone</label>
+          </div>
+          <div class="col col-sm-4">
+            <input type="text" class="form-control" name='phone' id="phone" placeholder="Phone" value="{{ $member->phone }}">
+            <x-form-error name='phone' />
+          </div>
+        </div>
+
+
+        <div class="form-group row p-2">
+          <div class="col col-sm-3">
             <label for="name">Pianni</label>
           </div>
           <div class="col col-sm-4">
@@ -53,6 +62,24 @@
           </div>
         </div>
 
+        <div class="form-group row p-2">
+          <div class="col col-sm-3">
+            <label for="name">SS Pawl awmna</label>
+          </div>
+          <div class="col col-sm-4">
+            <select class="form-control" name='sspawl' id="sspawl" placeholder="Bial">
+              <option value="Beginner" {{ $member->sspawl=='Beginner'?' selected ':'' }}>Beginner</option>
+              <option value="Primary" {{ $member->sspawl=='Primary'?' selected ':'' }}>Primary</option>
+              <option value="Junior" {{ $member->sspawl=='Junior'?' selected ':'' }}>Junior</option>
+              <option value="Baptisma" {{ $member->sspawl=='Baptisma'?' selected ':'' }}>Baptisma</option>
+              <option value="Intermediate" {{ $member->sspawl=='Intermediate'?' selected ':'' }}>Intermediate</option>
+              <option value="Senior A" {{ $member->sspawl=='Senior A'?' selected ':'' }}>Senior A</option>
+            </select>
+            <x-form-error name='sspawl' />
+          </div>
+        </div>
+
+        
         <div class="form-group row p-2">
           <div class="col col-sm-3">
             <label for="name">Bial</label>

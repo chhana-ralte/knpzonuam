@@ -35,8 +35,9 @@ class MemberController extends Controller
             'address' => request('address'),
             'details' => request('details')
         ]);
-        $members = Member::where('bial_id',$member->bial_id)->paginate();
-        return view('bial.show',['bial' => Bial::find($member->bial_id), 'members' => $members]);
+        //$members = Member::where('bial_id',$member->bial_id)->paginate();
+        return redirect('/bial/' . $member->bial_id);
+        //return view('bial.show',['bial' => Bial::find($member->bial_id), 'members' => $members]);
         //return view('bial.show',['bial' => $]);
     }
     public function show(Member $member){
@@ -56,6 +57,8 @@ class MemberController extends Controller
         $member->update([
             'name'=> request('name'),
             'father'=> request('father'),
+            'phone'=> request('phone'),
+            'sspawl'=> request('sspawl'),
             'bial_id' => request('bial'),
             'dob' => request('dob'),
             'address' => request('address'),

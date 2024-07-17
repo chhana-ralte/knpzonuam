@@ -62,29 +62,82 @@
 
 
 
-<div class="container-sm p-5 my-5 border text-white bg-yellow">
-  <h1>My First Bootstrap Page</h1>
-  <p>This part is inside a .container-fluid class.</p>
-  <p>The .container-fluid class provides a full width container, spanning the entire width of the viewport.</p>
-</div>
-<div class="container-sm p-5 my-5 border text-dark bg-white">
-    <!-- Control the column width, and how they should appear on different devices -->
-    <div class="row py-4 bg-dark text-dark-50">
-        <div class="col-sm-6 border text-dark-50 bg-white">first</div>
-        <div class="col-sm-6 border text-white">2</div>
-    </div>
-    <div class="row py-4 border">
-        <div class="col-sm-3 border bg-dark text-light">3</div>
-        <div class="col-sm-3 border px-3 bg-dark text-light">4</div>
-        <div class="col-sm-6 border px-3">5</div>
-    </div>
+  <div class="container-sm p-5 my-5 border text-white bg-yellow">
+    <h1>My First Bootstrap Page</h1>
+    <p>This part is inside a .container-fluid class.</p>
+    <p>The .container-fluid class provides a full width container, spanning the entire width of the viewport.</p>
+  </div>
+  <div class="container-sm p-5 my-5 border text-dark bg-white">
+      <!-- Control the column width, and how they should appear on different devices -->
+      <div class="row py-4 bg-dark text-dark-50">
+          <div class="col-sm-6 border text-dark-50 bg-white">first</div>
+          <div class="col-sm-6 border text-white">2</div>
+      </div>
+      <div class="row py-4 border">
+          <div class="col-sm-3 border bg-dark text-light">3</div>
+          <div class="col-sm-3 border px-3 bg-dark text-light">4</div>
+          <div class="col-sm-6 border px-3">5</div>
+      </div>
+      <div class="row py-4 border">
+          <div class="col-md-3 border bg-dark text-light">3</div>
+          <div class="col-md-3 border px-3 bg-dark text-light">4</div>
+          <div class="col-md-6 border px-3">5</div>
+      </div>
+      <!-- Or let Bootstrap automatically handle the layout -->
+      <div class="row">
+          <div class="col border">6</div>
+          <div class="col border">7</div>
+          <div class="col border">8</div>
+      </div>
+  </div>
+  <div class="container">
+    <button data-bs-toggle="collapse" data-bs-target="#demo" class="btn btn-primary">Collapsible</button>
 
-    <!-- Or let Bootstrap automatically handle the layout -->
-    <div class="row">
-        <div class="col border">6</div>
-        <div class="col border">7</div>
-        <div class="col border">8</div>
+    <div id="demo" class="collapse show">
+      Lorem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....orem ipsum dolor text....
     </div>
+  </div>
+  <div class="container mt-3">
+  <h2>Accordion Example</h2>
+  <p><strong>Note:</strong> The <strong>data-bs-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+        Collapsible Group Item #2
+      </a>
+      </div>
+      <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+      </div>
+    </div>
+    <div class="card col-md-5 data-align-center">
+      <div class="card-header">
+        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </div>
+      <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

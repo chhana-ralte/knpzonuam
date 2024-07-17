@@ -18,13 +18,13 @@
                             @endif
 
                             <div class="form-group row p-3">
-                                <div class="col col-md-8">
+                                <div class="col">
                                     <input class="form-control" name="search" placeholder="Search">
                                 </div>
                             </div>
                             <div class="form-group row p-3">
-                                <div class="col col-md-8">
-                                    <button class="btn btn-primary" type="submit">Search</button>
+                                <div class="col">
+                                    <button class="btn btn-primary form-control" type="submit">Search</button>
                                 </div>
                             </div>
                         </div>

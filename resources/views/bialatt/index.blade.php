@@ -1,13 +1,22 @@
 <x-bslayout>
     <x-slot:heading>
-        Welcome to KNP Zonuam website
+        Hminglamna report
     </x-slot:heading>
     <div class="container p-3">
         <div class="row p-3">
-            <div class="col col-sm-3">
-                Bial
-            </div>
-            <div class="col col-sm-9">
+
+            <div class="col">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link">Bial</a>
+                    </li>
+                @foreach($bials as $b)
+                    <li class="nav-item">
+                        <a class="nav-link {{$b->id==$bial->id?'active':''}}" href="{{ route('bial.att.index', $b->id) }}">{{ $b->bial }}</a>
+                    </li>
+                @endforeach
+                </ul>            
+<!--
             @foreach($bials as $b)
                 @if($b->id == $bial->id)
                     <x-button type="a" href="{{ route('bial.att.index', $b->id) }}" class="btn-secondary text-light">{{ $b->bial }}</x-button>
@@ -15,6 +24,7 @@
                     <x-button type="a" href="{{ route('bial.att.index', $b->id) }}">{{ $b->bial }}</x-button>
                 @endif
             @endforeach
+-->            
             </div>
         </div>
     </div>
@@ -49,7 +59,7 @@
                     @if(isset($atts[$am->id][$m->id]))
                         <td align=center>{{ $atts[$am->id][$m->id]}}</td>
                     @else
-                        <td>-</td>
+                        <td align=center>-</td>
                     @endif
                 @endforeach
             </tr>

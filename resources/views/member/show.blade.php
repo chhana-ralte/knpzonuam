@@ -4,9 +4,7 @@
     </x-slot:heading>
     <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
         <div>
-            <div class="px-4 sm:px-0">
-                <h3 class="text-base font-semibold leading-7 text-gray-900">Member Information</h3>
-            </div>
+
             <div class="container">
                 <div class="row p-2 border">
                     <div class="col col-sm-3">Hming</div>
@@ -17,8 +15,16 @@
                     <div class="col col-sm-5">{{ $member->father }}</div>
                 </div>
                 <div class="row p-2 border">
+                    <div class="col col-sm-3">Phone</div>
+                    <div class="col col-sm-5">{{ $member->phone }}</div>
+                </div>
+                <div class="row p-2 border">
                     <div class="col col-sm-3">Pianni</div>
                     <div class="col col-sm-5">{{ date_format(date_create($member->dob),'d-M') }}</div>
+                </div>
+                <div class="row p-2 border">
+                    <div class="col col-sm-3">SS Pawl awmna</div>
+                    <div class="col col-sm-5">{{ $member->sspawl }}</div>
                 </div>
                 <div class="row p-2 border">
                     <div class="col col-sm-3">Awmna bial</div>
