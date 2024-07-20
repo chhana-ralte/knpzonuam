@@ -78,7 +78,7 @@
             <div class="col col-sm-4">
                 <a class="btn btn-outline-secondary" href="{{ route('bial.att.index',$bial->id) }}">Cancel</a>
                 @can('manage',$bial)
-                    @if($attmaster->attpermitted()->status)
+                    @if($attmaster->attpermitted()->status || auth()->user()->level > 3)
                         <x-button type="submit" form="create-form">Update</x-button>
                     @endif
                 @endcan
