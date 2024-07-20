@@ -4,11 +4,13 @@
     </x-slot:heading>
     <div class="container">
         <div class="row p-2 border bg-dark text-light">
-            @if(auth()->user()->level >3)
-            <div class="col col-sm-3">
-                <a class="btn btn-primary" href="/attmaster/create">Kaini siamna</a>
-            </div>
-            @endif
+            @auth
+                @if(auth()->user()->level >3)
+                <div class="col col-sm-3">
+                    <a class="btn btn-primary" href="/attmaster/create">Kaini siamna</a>
+                </div>
+                @endif
+            @endauth
 
             <div class="col col-sm-3">
                 Bial-wise Report
