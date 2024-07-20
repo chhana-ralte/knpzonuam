@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\Log;
 
 class LoginController extends Controller
 {
@@ -20,6 +21,7 @@ class LoginController extends Controller
         ]);
         if($user){
             $request->session()->regenerate();
+            Log::create(['user_id' => auth()->user()->id]);
             return redirect('/');
         }
         else{

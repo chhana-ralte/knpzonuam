@@ -16,6 +16,7 @@ use App\Http\Controllers\MemberAttController;
 use App\Http\Controllers\MiscController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AttpermitController;
+use App\Http\Controllers\LogController;
 
 //use App\Policies\PostPolicy;
 
@@ -71,13 +72,14 @@ Route::controller(BialController::class)->group(function(){
 
 Route::controller(AttmasterController::class)->group(function(){
     Route::get('/attmaster','index')->name('attmaster.index');
-    Route::get('/attmaster/create','create')->name('attmaster.create')->middleware(['auth','can:create,attmaster']);
+    Route::get('/attmaster/create','create')->name('attmaster.create')->middleware(['auth']);
     Route::post('/attmaster','store')->name('attmaster.store')->middleware('auth');
     //Route::get('/attmaster/{attmaster}/edit','edit')->name('attmaster.edit');
     //Route::patch('/attmaster/{attmaster}','update')->name('attmaster.update');
     //Route::delete('/attmaster/{attmaster}','destroy')->name('attmaster.destroy');
 });
 
+Route::get('/log', [LogController::class, 'index'])->middleware(['auth']);
 Route::resource('attmaster.att',Attcontroller::class)->only(['index']);
 Route::resource('attmaster.att',Attcontroller::class)->except(['index'])->middleware('auth');
 

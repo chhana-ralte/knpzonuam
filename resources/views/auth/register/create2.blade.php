@@ -1,5 +1,5 @@
 <x-bslayout>
-  <x-slot:heading>
+    <x-slot:heading>
         User Registration
     </x-slot:heading>
 
