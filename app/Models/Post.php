@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bial_User extends Model
+class Post extends Model
 {
     use HasFactory;
-    public $table = 'bial_user';
-    public function bial(){
-        return $this->belongsTo(Bial::class);
-    }
+    protected $guarded=[];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

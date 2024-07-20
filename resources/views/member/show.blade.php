@@ -42,8 +42,10 @@
                     <div class="col col-sm-3"></div>
                     <div class="col col-sm-5">
                         <a class="btn btn-outline-secondary" href='/bial/{{$member->bial->id}}'>Back</a>
-                        @auth
+                        @can('edit',$member)
                             <x-button href='/member/{{$member->id}}/edit'>Edit</x-button>
+                        @endcan
+                        @can('delete',$member)
                             @if($member->deleted)
                                 <x-button type='delete' form="undo-delete-form">UNDO DELETE</x-button>
                             @else
@@ -59,7 +61,7 @@
                                 @method('DELETE')
                                 <input type='hidden' name='delete' value='false'>
                             </form>
-                        @endif                
+                        @endcan
                     </div>
                 </div>
             </div>

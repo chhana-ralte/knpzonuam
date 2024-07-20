@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -13,33 +14,41 @@ use App\Http\Controllers\AttController;
 use App\Http\Controllers\BialAttController;
 use App\Http\Controllers\MemberAttController;
 use App\Http\Controllers\MiscController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AttpermitController;
 
+//use App\Policies\PostPolicy;
+
+use Illuminate\Http\Request;
 //use App\Models\Student;
 //use App\Models\Person;
 
+Route::controller(TestController::class)->group(function(){
+    Route::get('test', 'index');
+    Route::get('dashboard', 'dashboard');
+    Route::get('/ckeditor', 'ckeditor');
+});
+
 Route::get('/', [BialController::class, 'index']);
-// {
-    //return "Hello world";
-    //dd(Person::all());
-    //return view("member.index", );
-    //return view("home",["students" => Student::with('person')->cursorPaginate(5)]);
-    //return view("home",["students" => Student::with('person')->simplePaginate(5)]);
-    //return view('welcome');
-//});
+
 Route::controller(MiscController::class)->group(function(){
     Route::get('/search', 'search');
     Route::get('/searchresult', 'searchResult');
     Route::get('/hruaitute','hruaitute');
 });
 
+// Route::resource('member', MemberController::class)->only(['edit','update','destroy'])->middleware(['auth','can:edit,member']);
+// Route::resource('member', MemberController::class)->only(['create','store'])->middleware('auth');
+// Route::resource('member', MemberController::class)->only(['index','show']);
+
 Route::controller(MemberController::class)->group(function(){
     Route::get('/member','index')->name('member.index');
     Route::get('/member/create','create')->name('member.create')->middleware('auth');
-    Route::post('/member','store')->name('member.store');
+    Route::post('/member','store')->name('member.store')->middleware('auth');
     Route::get('/member/{member}','show')->name('member.show');
-    Route::get('/member/{member}/edit','edit')->name('member.edit')->middleware('auth');
-    Route::patch('/member/{member}','update')->name('member.update');
-    Route::delete('/member/{member}','destroy')->name('member.destroy');
+    Route::get('/member/{member}/edit','edit')->name('member.edit')->middleware(['auth','can:edit,member']);
+    Route::patch('/member/{member}','update')->name('member.update')->middleware('auth');
+    Route::delete('/member/{member}','destroy')->name('member.destroy')->middleware(['auth','can:delete,member']);
 });
 
 Route::controller(RegisterController::class)->group(function(){
@@ -55,11 +64,6 @@ Route::controller(LoginController::class)->group(function(){
     Route::post('/changepwd', 'changePasswordStore')->name('changepassword');
 });
 
-Route::controller(TestController::class)->group(function(){
-    Route::get('test', 'index');
-    Route::get('dashboard', 'dashboard');
-});
-
 Route::controller(BialController::class)->group(function(){
     Route::get('/bial','index')->name('bial.index');
     Route::get('/bial/{bial}','show')->name('bial.show');
@@ -67,21 +71,15 @@ Route::controller(BialController::class)->group(function(){
 
 Route::controller(AttmasterController::class)->group(function(){
     Route::get('/attmaster','index')->name('attmaster.index');
-    Route::get('/attmaster/create','create')->name('attmaster.create')->middleware('auth');
+    Route::get('/attmaster/create','create')->name('attmaster.create')->middleware(['auth','can:create,attmaster']);
     Route::post('/attmaster','store')->name('attmaster.store')->middleware('auth');
     //Route::get('/attmaster/{attmaster}/edit','edit')->name('attmaster.edit');
     //Route::patch('/attmaster/{attmaster}','update')->name('attmaster.update');
     //Route::delete('/attmaster/{attmaster}','destroy')->name('attmaster.destroy');
 });
 
-Route::controller(AttController::class)->group(function(){
-    Route::get('/attmaster/{attmaster}/att','index')->name('attmaster.att.index');
-    Route::get('/attmaster/{attmaster}/att/create','create')->name('attmaster.att.create')->middleware('auth');
-    Route::post('/attmaster/{attmaster}/att','store')->name('attmaster.att.store')->middleware('auth');
-    //Route::get('/attmaster/{attmaster}/edit','edit')->name('attmaster.edit');
-    //Route::patch('/attmaster/{attmaster}','update')->name('attmaster.update');
-    //Route::delete('/attmaster/{attmaster}','destroy')->name('attmaster.destroy');
-});
+Route::resource('attmaster.att',Attcontroller::class)->only(['index']);
+Route::resource('attmaster.att',Attcontroller::class)->except(['index'])->middleware('auth');
 
 Route::controller(BialAttController::class)->group(function(){
     Route::get('/bial/{bial}/att','index')->name('bial.att.index');
@@ -101,9 +99,23 @@ Route::controller(MemberAttController::class)->group(function(){
     //Route::delete('/member/{member}','destroy')->name('member.destroy');
 });
 
+Route::resource('post',PostController::class)->only(['create','store'])->middleware('auth');
+Route::resource('post',PostController::class)->only(['index','show']);
+Route::resource('post',PostController::class)->only(['edit','destroy','update'])->middleware(['auth','can:edit,post']);
+//Route::resource('post',PostController::class)->only(['edit','destroy'])->middleware('auth')->can('edit-post', 'post');
+
+
+// Route::controller(PostController::class)->group(function(){
+//     Route::get('/post','index');
+//     Route::get('/post/create','create')->middleware('auth');
+//     Route::post('/post','store');
+//     Route::get('/post/{post}','show');
+//     Route::get('/post/{post}/edit','edit')->middleware(['auth','can:edit-post,post']);
+//     Route::patch('/post/{post}','update');
+//     Route::delete('/post/{post}','destroy')->middleware('auth');
+// });
 // Route::resource('member.att',MemberAttController::class)->shallow();
 
-//Auth::routes(['bial.index']);
 
 // Route::controller(MemberController::class)->group(function(){
 //    Route::get('/member/deleteall','deleteAll');
@@ -121,13 +133,8 @@ Route::controller(MemberAttController::class)->group(function(){
 
 
 
-Route::get('/testing', function () {
-    //return "Hello world";
-    return view("test", [
-        "hello" => "Hellooooowooeoeoeooe"
-    ]);
-    //return view('welcome');
-});
+Route::get('/ajaxtest', [AttpermitController::class, 'index']);
+Route::post('/ajaxtest', [AttpermitController::class, 'store']);
 
 
 

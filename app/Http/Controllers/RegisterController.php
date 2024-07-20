@@ -18,12 +18,9 @@ class RegisterController extends Controller
             'username' => 'required',
             'password' => ['required', 'min:3', 'confirmed']
         ]);
-        
         $user = User::create($validated);
-        //dd($validated);
-        Auth::login($user);
+        $user->bials()->sync($request->bial);
+        //Auth::login($user);
+        return view('message',['message' => 'Registered successfully']);
     }
-
-    
-
 }

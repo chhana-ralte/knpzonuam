@@ -44,4 +44,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function bials(){
+        return $this->belongsToMany(Bial::class);
+    }
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }

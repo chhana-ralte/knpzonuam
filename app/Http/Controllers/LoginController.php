@@ -30,7 +30,13 @@ class LoginController extends Controller
         return view('auth.login.changepwd');
     }
     public function changePasswordStore(){
-        return "Hello";
+        request()->validate([
+            'password' => ['required', 'min:3', 'confirmed' ]
+        ]);
+        $user = Auth::user();
+        $user->password = request()->input('password');
+        return view('auth.login.changepwd',['message' => 'Password changed successfully']);
+        dd($user);
     }
     public function destroy(){
         Auth::logout();

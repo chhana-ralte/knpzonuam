@@ -12,4 +12,7 @@ class TestController extends Controller
     public function dashboard(){
         return view('test.dashboard');
     }
+    public function ckeditor(){
+        return view('test.ckeditor');
+    }
 }

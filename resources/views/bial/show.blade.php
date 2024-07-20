@@ -53,10 +53,10 @@
                 <tr>
                     @if($member->deleted)
                         <td><i>NA</i></td>
-                        <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2 px-4"><s><i>{{$member->name}}</i></s></a></td>
+                        <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2"><s><i>{{$member->name}}</i></s></a></td>
                     @else
                         <td>{{ $sl++ }}</td>
-                        <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2 px-4">{{$member->name}}</a></td>
+                        <td><a href="/member/{{$member->id}}" class="block hover:bg-gray-100 py-2">{{$member->name}}</a></td>
                     @endif
                     <td>{{$member->father}}</td>
                 </tr>

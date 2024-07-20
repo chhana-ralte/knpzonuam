@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bial_user', function (Blueprint $table) {
+        Schema::create('attpermits', function (Blueprint $table) {
             $table->id();
-            $table->ForeignIdFor(App\Models\Bial::class);
-            $table->ForeignIdFor(App\Models\User::class);
+            $table->foreignIdFor(App\Models\Attmaster::class);
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bial__users');
+        Schema::dropIfExists('attpermits');
     }
 };

@@ -23,4 +23,5 @@ class MiscController extends Controller
         return view('searchresult',['str' => $str, 'members' => $members]);
         
     }
+
 }

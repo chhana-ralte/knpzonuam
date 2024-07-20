@@ -12,7 +12,8 @@ class AttmasterController extends Controller
      */
     public function index()
     {
-        return view('attmaster.index',['attmasters' => Attmaster::all()]);
+        $attmasters = Attmaster::orderBy('kaini')->get();
+        return view('attmaster.index',['attmasters' => $attmasters]);
     }
 
     /**

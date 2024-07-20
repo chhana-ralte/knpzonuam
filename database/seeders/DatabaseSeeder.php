@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'username' => 'test',
-            'password' => 'password'
+            'password' => 'password',
+            'level' => '5'
         ]);
         for($i=1;$i<10;$i++){
             Bial::factory()->create([

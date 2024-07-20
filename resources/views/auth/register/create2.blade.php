@@ -51,6 +51,18 @@
 
                             <div class="form-group row p-3">
                                 <div class="col col-sm-4">
+                                    <label for="bials">Bial</label>
+                                </div>
+                                <div class="col col-sm-4">
+                                    @foreach(App\Models\Bial::orderBy('bial')->get() as $b)
+                                        <label for="bial_{{ $b->id }}">{{$b->bial}}</label>
+                                        <input type="checkbox" name="bial[]" value="{{ $b->id }}">
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="form-group row p-3">
+                                <div class="col col-sm-4">
                                     
                                 </div>
                                 <div class="col col-sm-4">

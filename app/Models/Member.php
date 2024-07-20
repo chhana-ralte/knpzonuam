@@ -18,5 +18,4 @@ class Member extends Model
     public function att(){
         return $this->hasMany(Att::class);
     }
-
 }
