@@ -27,7 +27,7 @@
         @foreach($attmasters as $am)
         <div class="row p-2">
             <div class="col col-sm-3">
-                {{ date_format(date_create($am->kaini),'d-m-y') }}
+                <a href="/attmaster/{{ $am->id }}">{{ date_format(date_create($am->kaini),'d-m-y') }}</a>
             </div>
             @if(auth()->user()->level > 3)
                 <div class="col col-sm-3">

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Bial;
+use App\Models\Role;
+use App\Models\Role_User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,19 +16,41 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::truncate();
+        Role::truncate();
+        Bial::truncate();
         // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'username' => 'test',
-            'password' => 'password',
+        User::create([
+            'name' => 'Admin User',
+            'username' => 'Admin',
+            'password' => 'admin',
             'level' => '5'
         ]);
         for($i=1;$i<10;$i++){
-            Bial::factory()->create([
+            Bial::create([
                 'bial' => $i
             ]);
         }
-        $this->call(MemberSeeder::class);
+        Role::create([
+            'role' => 'Super',
+            'level' => 5
+        ]);
+        Role::create([
+            'role' => 'Admin',
+            'level' => 4
+        ]);
+        Role::create([
+            'role' => 'Zirtirtu',
+            'level' => 2
+        ]);
+        Role::create([
+            'role' => 'Member',
+            'level' => 1
+        ]);
+        Role_User::create([
+            'role_id' => 1,
+            'user_id' => 1
+        ]);
+        //$this->call(MemberSeeder::class);
     }
 }

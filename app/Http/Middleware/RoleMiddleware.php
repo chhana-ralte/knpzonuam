@@ -13,10 +13,11 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role = 'owner'): Response
+    public function handle(Request $request, Closure $next, $role = 'super'): Response
     {
-        dd($request->all());
-        if(auth()->user() && auth()->user()->level >= 5){
+        //dd($role);
+        //dd($request->all());
+        if(auth()->user() && auth()->user()->level > 3){
             return $next($request);
         }
         else{

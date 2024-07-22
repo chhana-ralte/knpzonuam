@@ -34,13 +34,16 @@
         <li class="nav-item">
           <a class="nav-link" href="/post">Thuziak</a>
         </li>
-        @auth 
-          @if(auth()->user()->level > 3)
+        @if(auth()->check() && auth()->user()->level > 3)
             <li class="nav-item">
               <a class="nav-link" href="/log">Logs</a>
             </li>
           @endif
-        @endauth
+          @if(auth()->check() && auth()->user()->level > 3)
+            <li class="nav-item">
+              <a class="nav-link" href="/user">Users</a>
+            </li>
+          @endif
       </ul>
       <form class="d-flex" action="/searchresult" method="get">
         <input class="form-control me-2" type="text" placeholder="Search" name=search>

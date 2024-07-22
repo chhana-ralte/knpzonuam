@@ -17,6 +17,7 @@ use App\Http\Controllers\MiscController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AttpermitController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\UserController;
 
 //use App\Policies\PostPolicy;
 
@@ -74,6 +75,7 @@ Route::controller(AttmasterController::class)->group(function(){
     Route::get('/attmaster','index')->name('attmaster.index');
     Route::get('/attmaster/create','create')->name('attmaster.create')->middleware(['auth']);
     Route::post('/attmaster','store')->name('attmaster.store')->middleware('auth');
+    Route::get('/attmaster/{attmaster}','show')->name('attmaster.show');
     //Route::get('/attmaster/{attmaster}/edit','edit')->name('attmaster.edit');
     //Route::patch('/attmaster/{attmaster}','update')->name('attmaster.update');
     //Route::delete('/attmaster/{attmaster}','destroy')->name('attmaster.destroy');
@@ -109,11 +111,11 @@ Route::resource('post',PostController::class)->only(['edit','destroy','update'])
 //Route::resource('user', UserController::class)->middleware(['auth','can:edit,user']);
 
 Route::controller(UserController::class)->group(function(){
-    Route::get('/user','index')->middleware('auth');
+    Route::get('/user','index')->middleware(['auth','role:user']);
     Route::get('/user/create','create')->middleware('auth');
     Route::post('/user','store');
     Route::get('/user/{user}','show');
-    Route::get('/User/{user}/edit','edit')->middleware(['auth','can:edit-user,user']);
+    Route::get('/user/{user}/edit','edit')->middleware(['auth']);
     Route::patch('/user/{user}','update');
     Route::delete('/user/{user}','destroy')->middleware('auth');
 });

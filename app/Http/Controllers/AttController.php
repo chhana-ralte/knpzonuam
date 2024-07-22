@@ -66,7 +66,7 @@ class AttController extends Controller
             }
         }
 
-        return redirect('bial/' . $request->bial_id . '/att');
+        return redirect('/attmaster/' . $attmaster->id);
         dd($request->all());
         dd($data);
         //return $tmpatt;

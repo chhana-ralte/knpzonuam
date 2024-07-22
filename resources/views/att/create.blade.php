@@ -1,13 +1,20 @@
 <x-bslayout>
     <x-slot:heading>
-        Hming lamna
+    <a href="/attmaster/{{$attmaster->id}}">{{ date_format(date_create($attmaster->kaini), 'd-M-y') }}</a> hming lamna
     </x-slot:heading>
     <div class="container">
-        <h3>{{ date_format(date_create($attmaster->kaini), 'd-M-y') }} Hming lamna
-            @if(isset($bial))
-                (Bial {{ $bial->bial }}-na)
-            @endif
-        </h3>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link">Bial</a>
+            </li>
+        @foreach(App\Models\Bial::orderBy('bial')->get() as $b)
+            <li class="nav-item">
+                <a class="nav-link {{$b->id==$bial->id?'active':''}}" href="{{ route('attmaster.att.create', ['attmaster'=>$attmaster->id,'bial_id'=>$b->id]) }}">{{ $b->bial }}</a>
+            </li>
+        @endforeach
+        </ul>     
+        
         <div class="row">
             <form method="post" action="{{ route('attmaster.att.store',$attmaster->id) }}" id="create-form">
                 @csrf

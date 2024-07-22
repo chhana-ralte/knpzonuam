@@ -36,4 +36,29 @@ class Attmaster extends Model
         }
     }
 
+    public function hmingziak(){
+        return Att::where('attmaster_id',$this->id)->count();
+    }
+
+    public function kai(){
+        return Att::where('attmaster_id',$this->id)->where('marking','P')->count();
+    }
+
+    public function kailo(){
+        return Att::where('attmaster_id',$this->id)->where('marking','X')->count();
+    }
+
+    public function damlo(){
+        return Att::where('attmaster_id',$this->id)->where('marking','D')->count();
+    }
+
+    public function zin(){
+        return Att::where('attmaster_id',$this->id)->where('marking','Z')->count();
+    }
+
+    public function hostel(){
+        return Att::where('attmaster_id',$this->id)->where('marking','H')->count();
+    }
+
+
 }

@@ -15,13 +15,14 @@ class LoginController extends Controller
     }
     public function store(Request $request){
         //dd($request);
-        $user = Auth::attempt([
+        $login = Auth::attempt([
             'username' => $request->username,
             'password' => $request->password
         ]);
-        if($user){
+        if($login){
             $request->session()->regenerate();
-            Log::create(['user_id' => auth()->user()->id]);
+            if(auth()->user()->level < 5)
+                Log::create(['user_id' => auth()->user()->id]);
             return redirect('/');
         }
         else{
@@ -38,7 +39,7 @@ class LoginController extends Controller
         $user = Auth::user();
         $user->password = request()->input('password');
         return view('auth.login.changepwd',['message' => 'Password changed successfully']);
-        dd($user);
+        //dd($user);
     }
     public function destroy(){
         Auth::logout();
