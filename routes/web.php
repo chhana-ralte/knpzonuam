@@ -106,6 +106,17 @@ Route::resource('post',PostController::class)->only(['index','show']);
 Route::resource('post',PostController::class)->only(['edit','destroy','update'])->middleware(['auth','can:edit,post']);
 //Route::resource('post',PostController::class)->only(['edit','destroy'])->middleware('auth')->can('edit-post', 'post');
 
+//Route::resource('user', UserController::class)->middleware(['auth','can:edit,user']);
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/user','index')->middleware('auth');
+    Route::get('/user/create','create')->middleware('auth');
+    Route::post('/user','store');
+    Route::get('/user/{user}','show');
+    Route::get('/User/{user}/edit','edit')->middleware(['auth','can:edit-user,user']);
+    Route::patch('/user/{user}','update');
+    Route::delete('/user/{user}','destroy')->middleware('auth');
+});
 
 // Route::controller(PostController::class)->group(function(){
 //     Route::get('/post','index');

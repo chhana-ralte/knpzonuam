@@ -41,5 +41,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Member::class, MemberPolicy::class);
         Gate::policy(Bial::class, BialPolicy::class);
         Gate::policy(Attmaster::class, AttmasterPolicy::class);
+        Gate::policy(User::class, UserPolicy::class);
     }
 }
