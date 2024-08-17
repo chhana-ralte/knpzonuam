@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="container p-3">
+    <div class="container-sm p-3">
         <x-table>
             <tr>
                 <th>Sl</th><th>Hming</th>

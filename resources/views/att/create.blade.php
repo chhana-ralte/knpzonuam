@@ -45,35 +45,35 @@
                                 <?php $disabled = ' disabled ' ?>
                             @endcan
 
-                            <label for='{{ "idp_" . $m->id }}'>Kai</label>
+                            <label for='{{ "idp_" . $m->id }}'>P</label>
                             <input type='radio' name='{{ "id_" . $m->id }}' id='{{ "idp_" . $m->id }}' value='P' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$m->id]) && $atts[$m->id] == 'X'?' checked ':'';
                             ?>
-                            <label for='{{ "idx_" . $m->id }}'>Kai lo</label>
+                            <label for='{{ "idx_" . $m->id }}'>X</label>
                             <input type='radio' name='{{ "id_" . $m->id }}' id='{{ "idx_" . $m->id }}' value='X' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$m->id]) && $atts[$m->id] == 'D'?' checked ':'';
                             ?>
-                            <label for='{{ "idd_" . $m->id }}'>Dam lo</label>
+                            <label for='{{ "idd_" . $m->id }}'>D</label>
                             <input type='radio' name='{{ "id_" . $m->id }}' id='{{ "idd_" . $m->id }}' value='D' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$m->id]) && $atts[$m->id] == 'Z'?' checked ':'';
                             ?>
-                            <label for='{{ "idz_" . $m->id }}'>Zin</label>
+                            <label for='{{ "idz_" . $m->id }}'>Z</label>
                             <input type='radio' name='{{ "id_" . $m->id }}' id='{{ "idz_" . $m->id }}' value='Z' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$m->id]) && $atts[$m->id] == 'H'?' checked ':'';
                             ?>
-                            <label for='{{ "idh_" . $m->id }}'>Hostel</label>
+                            <label for='{{ "idh_" . $m->id }}'>H</label>
                             <input type='radio' name='{{ "id_" . $m->id }}' id='{{ "idh_" . $m->id }}' value='H' {{ $checked }} {{ $disabled }}>
                         </td>
                     </tr>

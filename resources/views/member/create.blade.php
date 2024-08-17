@@ -1,7 +1,7 @@
 <x-bslayout>
   <x-slot:heading>
         Entry
-    </x-slot:heading>
+  </x-slot:heading>
 <div class="container">
   <form method='post' action="{{ route('member.store') }}">
     @csrf
