@@ -19,6 +19,17 @@
                     <?php $sl=1 ?>
                     @foreach($attmasters as $am)
                     <tr>
+                        @can('edit',$member)
+                            <?php 
+                                if($am->permitted())
+                                    $disabled = '';
+                                else
+                                    $disabled = ' disabled ';
+                            
+                            ?>
+                        @else
+                            <?php $disabled = ' disabled ' ?>
+                        @endcan
                         <td>{{ $sl++ }}</td>
                         <td>{{ date_format(date_create($am->kaini), 'd-M') }}</td>
                         <td>
@@ -26,35 +37,35 @@
                                 $checked = isset($atts[$am->id]) && $atts[$am->id] == 'P'?' checked ':'';
                             ?>
                             <label for='{{ "idp_" . $am->id }}'>Kai</label>
-                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idp_" . $am->id }}' value='P' {{ $checked }}>
+                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idp_" . $am->id }}' value='P' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$am->id]) && $atts[$am->id] == 'X'?' checked ':'';
                             ?>
                             <label for='{{ "idx_" . $am->id }}'>Kai lo</label>
-                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idx_" . $am->id }}' value='X' {{ $checked }}>
+                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idx_" . $am->id }}' value='X' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$am->id]) && $atts[$am->id] == 'D'?' checked ':'';
                             ?>
                             <label for='{{ "idd_" . $am->id }}'>Dam lo</label>
-                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idd_" . $am->id }}' value='D' {{ $checked }}>
+                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idd_" . $am->id }}' value='D' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$am->id]) && $atts[$am->id] == 'Z'?' checked ':'';
                             ?>
                             <label for='{{ "idz_" . $am->id }}'>Zin</label>
-                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idz_" . $am->id }}' value='Z' {{ $checked }}>
+                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idz_" . $am->id }}' value='Z' {{ $checked }} {{ $disabled }}>
                         </td>
                         <td>
                             <?php
                                 $checked = isset($atts[$am->id]) && $atts[$am->id] == 'H'?' checked ':'';
                             ?>
                             <label for='{{ "idh_" . $am->id }}'>Hostel</label>
-                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idh_" . $am->id }}' value='H' {{ $checked }}>
+                            <input type='radio' name='{{ "id_" . $am->id }}' id='{{ "idh_" . $am->id }}' value='H' {{ $checked }} {{ $disabled }}>
                         </td>
 
                     </tr>

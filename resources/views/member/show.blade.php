@@ -45,6 +45,9 @@
                         @can('edit',$member)
                             <x-button href='/member/{{$member->id}}/edit'>Edit</x-button>
                         @endcan
+                        @can('editAtt',$member)
+                            <x-button href='/member/{{$member->id}}/att/create'>Edit Att</x-button>
+                        @endcan
                         @can('delete',$member)
                             @if($member->deleted)
                                 <x-button type='delete' form="undo-delete-form">UNDO DELETE</x-button>
@@ -62,6 +65,7 @@
                                 <input type='hidden' name='delete' value='false'>
                             </form>
                         @endcan
+
                     </div>
                 </div>
             </div>

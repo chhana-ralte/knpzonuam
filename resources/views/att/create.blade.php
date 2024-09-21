@@ -27,7 +27,7 @@
                     @foreach($members as $m)
                     <tr>
                         <td>{{ $sl++ }}</td>
-                        <td>{{ $m->name }}</td>
+                        <td><a href="/member/{{$m->id}}/att/create">{{ $m->name }}</a></td>
                         <td>
                             <?php
                                 $checked = isset($atts[$m->id]) && $atts[$m->id] == 'P'?' checked ':'';

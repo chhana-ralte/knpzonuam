@@ -26,6 +26,15 @@ class MemberPolicy
             return false;
         }
     }
+    public function editAtt(User $user, Member $member) :bool
+    {
+        if(Bial_User::where('bial_id',$member->bial->id)->where('user_id',$user->id)->exists() || $user->level>3){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public function delete(User $user, Member $member) :bool
     {
         if(Bial_User::where('bial_id',$member->bial->id)->where('user_id',$user->id)->exists() || $user->level>3){
