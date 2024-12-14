@@ -23,16 +23,20 @@
                             <th colspan=4>Vawi : {{ $list->count }} kai</th>
                         </tr>
                         @endif
+                        <?php
+                            if($list->count != $kaizat){
+                                $kaizat = $list->count;
+                                $sl=1;
+                            }
+                                
+                        ?>
                         <tr>
                             <td>{{ $sl++ }}</td>
                             <td><a href='/kaitha/{{ $list->id }}'>{{ $list->name }}</a></td>
                             <td>{{ $list->bial_id }}</td>
                             <td>{{ $list->count }}</td>
                         </tr>
-                        <?php
-                            if($list->count != $kaizat)
-                                $kaizat = $list->count;
-                        ?>
+
                     @endforeach
                 </table>
             </div>
