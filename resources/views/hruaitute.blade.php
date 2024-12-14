@@ -64,7 +64,6 @@
                         <p>Nl. H.Vanlalruati</p>
                         <p>Nl. H.D.Lalpekdiki</p>
                         <p>Tv. F.Lalvensanga</p>
-                        <p>Nl. Lalrinawmi Hrahsel</p>
                         <p>Nl. Ruth Lalremruati Jongte</p>
                         <p>Pu C.Zorammawia (Conductor)</p>
                         <p>Upa R.Lalnunmawii (Sr. Adviser)</p>

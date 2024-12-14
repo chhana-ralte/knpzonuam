@@ -18,6 +18,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AttpermitController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KaithaController;
 
 //use App\Policies\PostPolicy;
 
@@ -32,6 +33,9 @@ Route::controller(TestController::class)->group(function(){
 });
 
 Route::get('/', [BialController::class, 'index']);
+
+Route::get('/kaitha', [KaithaController::class, 'index']);
+Route::get('/kaitha/{id}', [KaithaController::class, 'show']);
 
 Route::controller(MiscController::class)->group(function(){
     Route::get('/search', 'search');

@@ -29,6 +29,9 @@
           <a class="nav-link" href="/attmaster">Hminglamna</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/kaitha">Kai tha</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/search">Zawnawlna</a>
         </li>
         <li class="nav-item">
