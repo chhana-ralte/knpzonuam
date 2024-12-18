@@ -19,11 +19,13 @@ class KaithaController extends Controller
         //ORDER BY count(*) desc,bial_id;
         
         $lists = DB::table('atts')->join('members','members.id','=','atts.member_id')
-            ->selectRaw('members.id, members.name, count(atts.id) as count, bial_id')
+            ->selectRaw('members.id, members.name, members.father, count(atts.id) as count, bial_id')
             ->where('atts.marking','=','P')
-            ->groupBy('members.id', 'members.name', 'members.bial_id')
+            ->groupBy('members.id', 'members.father','members.name', 'members.bial_id')
             ->orderBy('count','desc')
             ->orderBy('bial_id')
+            ->orderBy('members.father')
+            ->orderBy('members.name')
             ->get();
             //->lists('count', 'kind');
         $data = ['kaizat' => $kaizat, 'lists' => $lists];

@@ -10,8 +10,9 @@
                     <throw>
                         <th>Sl</th>
                         <th>Hming</th>
+                        <th>Nu/Pa hming</th>
                         <th>Bial</th>
-                        <th>Kai zat</th>
+                        
                     </throw>
                     <?php 
                         $sl=1;
@@ -33,8 +34,9 @@
                         <tr>
                             <td>{{ $sl++ }}</td>
                             <td><a href='/kaitha/{{ $list->id }}'>{{ $list->name }}</a></td>
+                            <td>{{ $list->father }}</td>
                             <td>{{ $list->bial_id }}</td>
-                            <td>{{ $list->count }}</td>
+                            
                         </tr>
 
                     @endforeach
