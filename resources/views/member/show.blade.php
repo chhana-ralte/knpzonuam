@@ -20,7 +20,10 @@
                 </div>
                 <div class="row p-2 border">
                     <div class="col col-sm-3">Pianni</div>
-                    @if(is_date($member->dob))
+                    <?php
+                        $dob = explode('-',$member->dob);
+                    ?>
+                    @if(count($dob) == 3 && checkdate($dob[1], $dob[2], $dob[0]))
                         <div class="col col-sm-5">{{ date_format(date_create($member->dob),'d-M') }}</div>
                     @else
                         <div class="col col-sm-5">NA</div>

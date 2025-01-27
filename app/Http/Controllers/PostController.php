@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::where('deleted',0)->paginate();
+        $posts = Post::where('deleted',0)->orderBy('created_at','desc')->paginate();
         return view('post.index',['posts' => $posts]);
     }
 

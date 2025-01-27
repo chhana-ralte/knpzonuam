@@ -5,7 +5,7 @@
 
     <div class="container p-3">
         <div class="card">
-        @foreach(App\Models\Log::orderBy('created_at')->get() as $log)
+        @foreach(App\Models\Log::orderBy('created_at','desc')->get() as $log)
             <div class="card-body">
                 <div class="row">
                     <div class="col">
