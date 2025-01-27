@@ -20,7 +20,11 @@
                 </div>
                 <div class="row p-2 border">
                     <div class="col col-sm-3">Pianni</div>
-                    <div class="col col-sm-5">{{ date_format(date_create($member->dob),'d-M') }}</div>
+                    @if(is_date($member->dob))
+                        <div class="col col-sm-5">{{ date_format(date_create($member->dob),'d-M') }}</div>
+                    @else
+                        <div class="col col-sm-5">NA</div>
+                    @endif
                 </div>
                 <div class="row p-2 border">
                     <div class="col col-sm-3">SS Pawl awmna</div>

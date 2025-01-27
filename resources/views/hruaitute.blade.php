@@ -1,6 +1,6 @@
 <x-bslayout>
     <x-slot:heading>
-        2024 Zonuam Unit KNP Hruaitute
+        2025 Zonuam Unit KNP Hruaitute
     </x-slot:heading>
 
     <div class="container p-3">
@@ -27,7 +27,7 @@
                         Secretary
                     </div>
                     <div class="col col-sm-5">
-                        Pu R.Lalchhanhima
+                        Nl. H.Vanlalruati
                     </div>
                 </div>
                 <div class="row">
@@ -35,7 +35,7 @@
                         Asst. Secretary
                     </div>
                     <div class="col col-sm-5">
-                        Nl. Pc. Vanlalhruaii
+                        Pu F.Lalremruata
                     </div>
                 </div>
                 <div class="row">
@@ -43,7 +43,7 @@
                         Treasurer
                     </div>
                     <div class="col col-sm-5">
-                        Pi C.Lalbiaknungi
+                        Pi Pi K. Kristazi Notlia
                     </div>
                 </div>
                 <div class="row">
@@ -51,7 +51,24 @@
                         Fin. Secretary
                     </div>
                     <div class="col col-sm-5">
-                        Nl. Lalrinawmi Hrahsel
+                    NI Lalmuanpuii
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-sm-3 p-2">
+                        Conductor
+                    </div>
+                    <div class="col col-sm-5">
+                        Rbt. C.Zorammawia
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-sm-3 p-2">
+                        Asst. Conductors
+                    </div>
+                    <div class="col col-sm-5">
+                        <p>Tv. F.Lalvensanga</p>
+                        <p>Pu Lalmalsawma Hnamte</p>
                     </div>
                 </div>
                 <div class="row">
@@ -59,16 +76,8 @@
                         Committee members
                     </div>
                     <div class="col col-sm-5">
-                        <p>Pi Kristazi K.Notlia</p>
-                        <p>Pi K.Vanlalkhawngaihzuali</p>
-                        <p>Nl. H.Vanlalruati</p>
                         <p>Nl. H.D.Lalpekdiki</p>
-                        <p>Tv. F.Lalvensanga</p>
-                        <p>Nl. Ruth Lalremruati Jongte</p>
-                        <p>Pu C.Zorammawia (Conductor)</p>
-                        <p>Upa R.Lalnunmawii (Sr. Adviser)</p>
-                        <p>Upa K.Tlanthanga (Sr. Adviser)</p>
-                        
+                        <p>Upa P.S.Sanghluna (Sr. Adviser)</p>
                     </div>
                 </div>
             </div>
