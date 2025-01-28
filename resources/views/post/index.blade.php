@@ -8,7 +8,7 @@
                 Welcome to KNP Zonuam thuziakte.
             </x-card-header>
             <x-card-body>
-                <a class="btn btn-primary" href="/post/create">Post thar</a>
+                <a class="btn btn-primary" href="/post/create">Post thar siamna</a>
                 <div class="list-group">
                 @foreach($posts as $p)
                     <a href="/post/{{ $p->id }}" class="list-group-item">
