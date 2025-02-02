@@ -51,24 +51,31 @@
                         Fin. Secretary
                     </div>
                     <div class="col col-sm-5">
-                    NI Lalmuanpuii
+                        NI Lalmuanpuii
                     </div>
                 </div>
                 <div class="row">
                     <div class="col col-sm-3 p-2">
-                        Conductor
+                        Conductors
                     </div>
                     <div class="col col-sm-5">
-                        Rbt. C.Zorammawia
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-sm-3 p-2">
-                        Asst. Conductors
-                    </div>
-                    <div class="col col-sm-5">
+                        <p>
+                            Rbt. C.Zorammawia
+                        </p>
+                        <p>
+                            Rbt. C.Zorammawia
+                        </p>
                         <p>Tv. F.Lalvensanga</p>
                         <p>Pu Lalmalsawma Hnamte</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-sm-3 p-2">
+                        Se. Advisers
+                    </div>
+                    <div class="col col-sm-5">
+                    <p>Upa P.S.Sanghluna</p>
+                    <p>Upa Lalthawmliana</p>
                     </div>
                 </div>
                 <div class="row">
@@ -76,8 +83,10 @@
                         Committee members
                     </div>
                     <div class="col col-sm-5">
+                        <p>Pi Debbie Lalremruati</p>
+                        <p>Pi Lalnuntluangi Renthlei</p>
+                        <p>Nl. Ruth Lalremruati Zongte</p>
                         <p>Nl. H.D.Lalpekdiki</p>
-                        <p>Upa P.S.Sanghluna (Sr. Adviser)</p>
                     </div>
                 </div>
             </div>
