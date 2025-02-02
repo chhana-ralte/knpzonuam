@@ -21,7 +21,7 @@ class LoginController extends Controller
         ]);
         if($login){
             $request->session()->regenerate();
-            if(auth()->user()->level < 5)
+            if(auth()->user()->id > 1)
                 Log::create(['user_id' => auth()->user()->id]);
             return redirect('/');
         }
